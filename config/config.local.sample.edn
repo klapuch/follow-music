@@ -1,0 +1,3 @@
+{
+ :last-fm {:key "TOKEN"}
+ :neo4j {:username "neo4j" :password "local" :host "follow-music-neo4j"}}

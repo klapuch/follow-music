@@ -1,0 +1,26 @@
+version: '3'
+networks:
+  follow-music:
+    external: true
+
+services:
+  neo4j:
+    image: neo4j:4.1-enterprise
+    container_name: follow-music-neo4j
+    env_file: env/docker/.env
+    ports:
+      - 7474:7474
+      - 7687:7687
+    networks:
+      - follow-music
+
+  clojure:
+    image: clojure:lein
+    command: "lein run"
+    working_dir: "/usr/src/app"
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - 3000:3000
+    networks:
+      - follow-music

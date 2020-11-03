@@ -1,0 +1,17 @@
+CREATE CONSTRAINT ON (user :User) ASSERT user.user IS UNIQUE;
+CREATE CONSTRAINT ON (user :User) ASSERT user.id IS UNIQUE;
+CREATE CONSTRAINT ON (user :User) ASSERT EXISTS (user.user);
+CREATE CONSTRAINT ON (user :User) ASSERT EXISTS (user.id);
+
+CREATE CONSTRAINT ON (artist :Artist) ASSERT artist.name IS UNIQUE;
+CREATE CONSTRAINT ON (artist :Artist) ASSERT artist.id IS UNIQUE;
+CREATE CONSTRAINT ON (artist :Artist) ASSERT EXISTS (artist.mbid);
+CREATE CONSTRAINT ON (artist :Artist) ASSERT EXISTS (artist.name);
+CREATE CONSTRAINT ON (artist :Artist) ASSERT EXISTS (artist.url);
+CREATE CONSTRAINT ON (artist :Artist) ASSERT EXISTS (artist.id);
+
+CREATE CONSTRAINT ON ()-[r :LISTEN_TO]-() ASSERT EXISTS (r.play_count);
+
+CREATE CONSTRAINT ON ()-[r :SIMILAR_TO]-() ASSERT EXISTS (r.relevance);
+
+CREATE CONSTRAINT ON ()-[r :NOT_INTERESTED_IN]-() ASSERT EXISTS (r.since);
